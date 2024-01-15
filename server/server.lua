@@ -268,7 +268,7 @@ RegisterCommand('city-pcd', function(source, args, rawCommand)
   TriggerClientEvent("chat:addMessage", -1, {
     color = {255, 0, 0},
     multiline = true,
-    args = {"~b~SimplePrio", "~r~NOTICE: ~y~The County priority was ended by " .. GetPlayerName(source) .. '! Cooldown is now in effect!'}
+    args = {"~b~SimplePrio", "~r~NOTICE: ~y~The City priority was ended by " .. GetPlayerName(source) .. '! Cooldown is now in effect!'}
   })
     citycooldown = Config.CityPriority.Basic.CooldownTimer
     CityCooldown()
