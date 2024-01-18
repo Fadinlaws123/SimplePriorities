@@ -1,2 +1,0 @@
-1. Fixed priority cooldown staying active even after showing available. 
-2. Fixed priority cooldown not printing itself being available after x amount of time passed.
