@@ -1,5 +1,0 @@
-1. Added job searching for the peacetime script for both:
- - NAT2K15 framework
- - ND_Core by Andyyy (1.0 version only)
- - Standalone version
-2. Fixed Message notifications for city prioity saying "county" instead of "city".
