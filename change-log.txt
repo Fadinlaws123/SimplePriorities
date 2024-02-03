@@ -1,0 +1,7 @@
+1. Added Discord Logging.
+2. Updated HUD UI.
+3. Updated Config.lua values.
+4. Added Priority joining ability.
+5. Added Priority leaving ability.
+6. Added Priority reset ability.
+7. Added bug catcher for cooldown to disable more than 1 cooldown active.
