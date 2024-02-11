@@ -1,0 +1,2 @@
+1. Fixed GUI overlapping issue.
+2. Updated Config removing some unneeded configurations.
