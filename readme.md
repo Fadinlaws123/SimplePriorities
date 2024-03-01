@@ -1,6 +1,6 @@
 # SimplePriorities
 
-### Version 1.0.7 Release
+### Version 1.0.8 Release
 
 ## ❓ About SimplePriorities:
 
