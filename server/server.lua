@@ -2,7 +2,7 @@
 if Config.Peacetime.FrameworkSettings.Framework == 'nd' then 
   NDCore = exports["ND_Core"]:GetCoreObject()
 end
-
+ 
 -- Peacetime Locals --
 local timestamp = os.date("%c")
 local isCop = false
