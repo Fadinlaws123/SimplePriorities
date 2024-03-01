@@ -45,6 +45,14 @@ function tableConcat(table, concat)
   return string
 end
 
+function tableCount(table)
+  local count = 0
+  for _ in pairs(table) do
+    count = count + 1
+  end
+  return count
+end
+
 -- Priority Cooldown Function -- 
 
 function countyCooldown(time)
@@ -158,9 +166,17 @@ RegisterCommand(Config.Priorities.County_Priority.Commands.PrioEnd, function(sou
       args = {"~w~[~b~SimplePrio~w~] ", "~y~ALERT: ~r~A countywide priority has been ~r~ended ~r~by ~o~" .. GetPlayerName(source) .. "~r~! Cooldown is now in effect for " .. Config.Priorities.County_Priority.TextSettings.CooldownSettings.CooldownTimer .. ' minute!'}
     })
   end
-  CPrioEnd_Success('SimplePrio \n', '**→ County Priority Ended by: __' .. GetPlayerName(source) .. '__ \n ** **→ Successful: ** *True*\n**→ Time command was executed:** *' .. timestamp .. '* \n **→ Command Used: ** *' .. Config.Priorities.County_Priority.Commands.PrioEnd .. '*')
-  countyPrioPlayers = {}
-  countyCooldown(Config.Priorities.County_Priority.TextSettings.CooldownSettings.CooldownTimer)
+  if countyPrioPlayers[player] then
+    CPrioEnd_Success('SimplePrio \n', '**→ County Priority Ended by: __' .. GetPlayerName(source) .. '__ \n ** **→ Successful: ** *True*\n**→ Time command was executed:** *' .. timestamp .. '* \n **→ Command Used: ** *' .. Config.Priorities.County_Priority.Commands.PrioEnd .. '*')
+    countyPrioPlayers = {}
+    countyCooldown(Config.Priorities.County_Priority.TextSettings.CooldownSettings.CooldownTimer)
+  else
+    TriggerClientEvent("chat:addMessage", player, {
+      color = {255, 0, 0},
+      multiline = true,
+      args = {"~w~[~b~SimplePrio~w~] ", "~y~ALERT: ~r~You cannot end this priority as you are not apart of the priority!"}
+    })
+  end
 end, false)
 
 -- Priority Cooldown Function -- 
@@ -246,7 +262,7 @@ RegisterCommand(Config.Priorities.County_Priority.Commands.LeavePrio, function(s
     CPrioLeave_Fail('SimplePrio \n', '**→ County Priority Leave Attempt by: __' .. GetPlayerName(source) .. '__ \n ** **→ Successful: ** *False* \n** → Fail Details:** *There is no active priority for you to leave!*\n \n**→ Time command was executed:** *' .. timestamp .. '* \n **→ Command Used: ** *' .. Config.Priorities.County_Priority.Commands.LeavePrio .. '*')
     return
   end
-  if tableCount(countyPrioPlayers) == 1 and countyPrioPlayers[player] == (GetPlayerName(player) .. ' #' .. player) then
+  if tableCount(countyPrioPlayers) == 1 and countyPrioPlayers[player] == GetPlayerName(player) .. ' #' .. player then
     TriggerClientEvent("chat:addMessage", -1, {
       color = {255, 0, 0},
       multiline = true,
@@ -278,19 +294,23 @@ RegisterCommand(Config.Priorities.County_Priority.Commands.PrioAvailable, functi
       countyPrioActive = false
       countyPrio = Config.Priorities.County_Priority.TextSettings.StatusMessages.StatusAvailable
     elseif countyPrioCooldown then
-      countyPrioCooldown = false
-      countyPrio = Config.Priorities.County_Priority.TextSettings.StatusMessages.StatusAvailable
+      TriggerClientEvent("chat:addMessage", player, {
+        color = {255, 0, 0},
+        multiline = true,
+        args = {"~w~[~b~SimplePrio~w~] ", "~r~ALERT: ~b~ You cannot reset the system as cooldown is ~g~enabled~b~! Please wait!"}
+      })
     elseif countyPrioHold then
       countyPrioHold = false
       countyPrio = Config.Priorities.County_Priority.TextSettings.StatusMessages.StatusAvailable
+    else
+      TriggerClientEvent("chat:addMessage", -1, {
+        color = {255, 0, 0},
+        multiline = true,
+        args = {"~w~[~b~SimplePrio~w~] ", "~r~ALERT: ~b~" .. GetPlayerName(source) .. ' ~y~has reset the countywide priority system!'}
+      })
+      CPrioReset_Success('SimplePrio \n', '**→ County Priority System Reset by: __' .. GetPlayerName(source) .. '__ \n ** **→ Successful: ** *True* \n**→ Time command was executed:** *' .. timestamp .. '* \n **→ Command Used: ** *' .. Config.Priorities.County_Priority.Commands.PrioAvailable .. '*')
+      TriggerClientEvent('SimplePrio:County:ReturnPrio', -1, countyPrio) 
     end
-    TriggerClientEvent("chat:addMessage", -1, {
-      color = {255, 0, 0},
-      multiline = true,
-      args = {"~w~[~b~SimplePrio~w~] ", "~r~ALERT: ~b~" .. GetPlayerName(source) .. ' ~y~has reset the countywide priority system!'}
-    })
-    CPrioReset_Success('SimplePrio \n', '**→ County Priority System Reset by: __' .. GetPlayerName(source) .. '__ \n ** **→ Successful: ** *True* \n**→ Time command was executed:** *' .. timestamp .. '* \n **→ Command Used: ** *' .. Config.Priorities.County_Priority.Commands.PrioAvailable .. '*')
-    TriggerClientEvent('SimplePrio:County:ReturnPrio', -1, countyPrio) 
   else
     TriggerClientEvent("chat:addMessage", player, {
       color = {255, 0, 0},
@@ -525,19 +545,23 @@ RegisterCommand(Config.Priorities.City_Priority.Commands.PrioAvailable, function
       cityPrioActive = false
       cityPrio = Config.Priorities.City_Priority.TextSettings.StatusMessages.StatusAvailable
     elseif cityPrioCooldown then
-      cityPrioCooldown = false
-      cityPrio = Config.Priorities.City_Priority.TextSettings.StatusMessages.StatusAvailable
+      TriggerClientEvent("chat:addMessage", player, {
+        color = {255, 0, 0},
+        multiline = true,
+        args = {"~w~[~b~SimplePrio~w~] ", "~r~ALERT: ~b~ You cannot reset the system as cooldown is ~g~enabled~b~! Please wait!"}
+      })
     elseif cityPrioHold then
       cityPrioHold = false
       cityPrio = Config.Priorities.City_Priority.TextSettings.StatusMessages.StatusAvailable
+    else
+      TriggerClientEvent("chat:addMessage", -1, {
+        color = {255, 0, 0},
+        multiline = true,
+        args = {"~w~[~b~SimplePrio~w~] ", "~r~ALERT: ~b~" .. GetPlayerName(source) .. ' ~y~has reset the citywide priority system!'}
+      })
+      CityPrioReset_Success('SimplePrio \n', '**→ City Priority System Reset by: __' .. GetPlayerName(source) .. '__ \n ** **→ Successful: ** *True* \n**→ Time command was executed:** *' .. timestamp .. '* \n **→ Command Used: ** *' .. Config.Priorities.City_Priority.Commands.PrioAvailable .. '*')
+      TriggerClientEvent('SimplePrio:City:ReturnPrio', -1, cityPrio) 
     end
-    TriggerClientEvent("chat:addMessage", -1, {
-      color = {255, 0, 0},
-      multiline = true,
-      args = {"~w~[~b~SimplePrio~w~] ", "~r~ALERT: ~b~" .. GetPlayerName(source) .. ' ~y~has reset the citywide priority system!'}
-    })
-    CityPrioReset_Success('SimplePrio \n', '**→ City Priority System Reset by: __' .. GetPlayerName(source) .. '__ \n ** **→ Successful: ** *True* \n**→ Time command was executed:** *' .. timestamp .. '* \n **→ Command Used: ** *' .. Config.Priorities.City_Priority.Commands.PrioAvailable .. '*')
-    TriggerClientEvent('SimplePrio:City:ReturnPrio', -1, cityPrio) 
   else
     TriggerClientEvent("chat:addMessage", player, {
       color = {255, 0, 0},
