@@ -208,6 +208,7 @@ RegisterCommand(Config.Priorities.County_Priority.Commands.PrioCooldown, functio
         })
       end
       CPrioCooldown_Success('SimplePrio \n', '**→ County Priority Cooldown Started by: __' .. GetPlayerName(source) .. '__ \n ** **→ Successful: ** *True* \n**→ Cooldown Timer:** *' .. time .. '*\n**→ Time command was executed:** *' .. timestamp .. '* \n **→ Command Used: ** *' .. Config.Priorities.County_Priority.Commands.PrioCooldown .. '*')
+      countyPrioPlayers = {}
       if time and time > 0 then
         countyCooldown(time)
       end
@@ -346,6 +347,7 @@ RegisterCommand(Config.Priorities.County_Priority.Commands.PrioOnHold, function(
       CPrioHold_Enabled('SimplePrio \n', '**→ County Priority Hold Changed By: __' .. GetPlayerName(source) .. '__ \n ** **→ Hold Status: ** *Enabled* \n**→ Time command was executed:** *' .. timestamp .. '* \n **→ Command Used: ** *' .. Config.Priorities.County_Priority.Commands.PrioOnHold .. '*')
     end
     TriggerClientEvent('SimplePrio:County:ReturnPrio', -1, countyPrio) 
+    countyPrioPlayers = {}
   else
     TriggerClientEvent("chat:addMessage", player, {
       color = {255, 0, 0},
@@ -459,6 +461,7 @@ RegisterCommand(Config.Priorities.City_Priority.Commands.PrioCooldown, function(
         })
       end
       CityPrioCooldown_Success('SimplePrio \n', '**→ City Priority Cooldown Started by: __' .. GetPlayerName(source) .. '__ \n ** **→ Successful: ** *True* \n**→ Cooldown Timer:** *' .. time .. '*\n**→ Time command was executed:** *' .. timestamp .. '* \n **→ Command Used: ** *' .. Config.Priorities.City_Priority.Commands.PrioCooldown .. '*')
+      cityPrioPlayers = {}
       if time and time > 0 then
         cityCooldown(time)
       end
@@ -597,6 +600,7 @@ RegisterCommand(Config.Priorities.City_Priority.Commands.PrioOnHold, function(so
       CityPrioHold_Enabled('SimplePrio \n', '**→ County Priority Hold Changed By: __' .. GetPlayerName(source) .. '__ \n ** **→ Hold Status: ** *Enabled* \n**→ Time command was executed:** *' .. timestamp .. '* \n **→ Command Used: ** *' .. Config.Priorities.City_Priority.Commands.PrioOnHold .. '*')
     end
     TriggerClientEvent('SimplePrio:City:ReturnPrio', -1, cityPrio) 
+    cityPrioPlayers = {}
   else
     TriggerClientEvent("chat:addMessage", player, {
       color = {255, 0, 0},
