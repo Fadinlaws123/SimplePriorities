@@ -2,7 +2,7 @@ fx_version 'cerulean'
 game 'gta5'
 
 author 'SimpleDevelopments'
-version '1.0.8'
+version '1.0.9'
 description 'Simple Priorities Script that gives you county & city priorities!'
 
 client_scripts {
