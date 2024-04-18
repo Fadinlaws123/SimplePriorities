@@ -1,0 +1,10 @@
+1. Replace the HUD with showing how many players are in priority, rather than their names. 
+2. Recoded the script to execute under 1 command rather than 15 commands.
+3. Added help command - /priohelp <county/city>
+4. Updated logging system
+5. Optimized Coding to run smoother.
+6. Fixed priority system to not work if peacetime is enabled.
+7. Added join / leave messages for players joining and leaving priorities.
+8. Removed the ability of players ending a priority unless they're in the priority.
+9. Fixed cooldown command not ending priorities.
+10. Fixed reset command not resetting priorities unles it's sent twice.
