@@ -1,6 +1,6 @@
 # SimplePriorities
 
-### Version 1.2 Release
+### Version 1.2.1 Release
 
 ## ❓ About SimplePriorities:
 
@@ -28,6 +28,19 @@
 3. prio.cooldown -- Ace permission group required to change prio cooldown.
 4. prio.reset -- Ace permission group required to change prio to "available".
 
-## ❔ Further Support:
+## 📸 Pictures
 
-- _If you require further support, that's alright, we will offer 24/7 support @ our discord here: https://discord.gg/wY9jQrPEYy_
+<p align="center">
+
+![image](https://github.com/Fadinlaws123/SimplePriorities/assets/144308790/1e6444a2-2ec4-4035-84ef-c25e685554fe) 
+![image](https://github.com/Fadinlaws123/SimplePriorities/assets/144308790/6fb7a6f5-9332-43e1-afe4-1383269c7ad5) 
+![image](https://github.com/Fadinlaws123/SimplePriorities/assets/144308790/2d321198-bb9e-4731-8280-a0c9c8eb79d7) 
+![image](https://github.com/Fadinlaws123/SimplePriorities/assets/144308790/a2a43c2b-92ef-47f0-b75b-c542f90f269e) 
+![image](https://github.com/Fadinlaws123/SimplePriorities/assets/144308790/17622e96-1ede-4a13-ba79-96633754e509)
+![image](https://github.com/Fadinlaws123/SimplePriorities/assets/144308790/6c182874-0a89-42bb-bca4-8c9660f33010)
+</p>
+
+## :link: Download Links:
+
+GitHub Link: [Here](https://github.com/Fadinlaws123/SimplePriorities/releases/latest)
+Direct Download: [SimplePriorities.zip|attachment](upload://dlaZ7e1zTLDqeOGK07LpFaFoL6a.zip) (13.7 KB)
