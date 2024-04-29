@@ -1,10 +1,14 @@
-1. Replace the HUD with showing how many players are in priority, rather than their names. 
-2. Recoded the script to execute under 1 command rather than 15 commands.
-3. Added help command - /priohelp <county/city>
-4. Updated logging system
-5. Optimized Coding to run smoother.
-6. Fixed priority system to not work if peacetime is enabled.
-7. Added join / leave messages for players joining and leaving priorities.
-8. Removed the ability of players ending a priority unless they're in the priority.
-9. Fixed cooldown command not ending priorities.
-10. Fixed reset command not resetting priorities unles it's sent twice.
+1. Fixed city priority hud not updating when people join / leave priority.
+2. Fixed script errors for checking /priolist - if a player leaves it shows "Unknown Player - Player Left?" in their place.
+3. Fixed script errors for putting priority on hold for both county + city.
+4. Updated version checker to send any version changes / current version into discord.
+5. Added auto messages to inform players of how to start a prio + not to create a priority scene whilst in cooldown / w/o priority.
+6. Fixed messages in chat being clumped up rather than spaced out.
+7. Added verification system to both cooldown function and prio hold functions that disable them being able to be used if one is enabled.
+    - Prio cooldown will not be enabled if priorities are on hold.
+    - Prio on hold refuses to be enabled if cooldown is enabled.
+8. Added a message that gets sent every time priority cooldown ends. 
+9. Fixed logging messages for all functions.
+10. Added a system that prevents users from having / taking priority with peacetime enabled.
+11. Updated the peacetime system so it changes the HUD to show "ON HOLD" during peacetime.
+12. Changed the reset function to only reset if it's active, if it's available, the system will notify stating it's already been reset.
